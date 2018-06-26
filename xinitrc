@@ -4,7 +4,7 @@
 setxkbmap -layout pt 
 
 # load .Xresources
-xrdb -load .suckless/Xresources
+xrdb -load .suckless/dotfiles/Xresources
 
 # change CAPS to ESC
 xmodmap -e 'clear lock' # Ensures you're not stuck in CAPS on mode
