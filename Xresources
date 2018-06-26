@@ -1,0 +1,25 @@
+! special; applies to all
+*.foreground:   #ffffff
+*.background:   #000000
+*.cursorColor:  #ffffff
+
+! 
+Xft.fonts: 		DejaVu Sans Mono
+Xft.lcdfilter: 	lcddefault
+Xft.antialias: 	true
+Xft.autohint: 	0
+Xft.hinting: 	true
+Xft.hintstyle: 	hintslight
+Xft.rgba: 		rgb
+Xft.dpi: 		96 
+
+! rxvt-unicode specific settings
+URxvt*imLocale: 		  en_IE.UTF-8
+URxvt.font: 			  xft:DejaVu Sans Mono:size=11:antialias=true:hinting=true
+URxvt.scrollBar:          False
+URxvt*saveLines: 		  1200000
+URxvt.depth:              32
+URxvt.intensityStyles:    True
+URxvt.internalBorder:     8
+URxvt.letterSpace:		  -1 
+

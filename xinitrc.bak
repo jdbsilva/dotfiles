@@ -1,0 +1,24 @@
+#!/bin/bash 
+
+# load PT keyboard
+setxkbmap -layout pt 
+
+# change CAPS to ESC
+xmodmap -e 'clear lock' # Ensures you're not stuck in CAPS on mode
+xmodmap -e 'keycode 0x42=Escape' # Remaps the keyboard so CAPS LOCK = ESC
+
+# set background image
+feh --bg-scale ".suckless/backgrounds/dark0.png"
+
+while true
+do
+	bat=$(acpi | grep "Battery 1" | cut -d" " -f 4 | cut -d"," -f 1)
+	ip=$(ip addr | grep "wlp58s0" | grep "inet" | cut -d" " -f6 | cut -d"/" -f1)
+	vol=$(amixer get Master | sed -n '5p' | cut -d" " -f 6 | cut -d"[" -f 2 | cut -d"]" -f 1)
+	xsetroot -name "$(echo -e '\uf028') $vol $(echo -e '\uf240') $bat $ip $(date +"%A %d.%m.%y %H:%M")"
+	#.suckless/scripts/lidpowermanagement.sh
+	sleep 0.5 # update time
+done&
+
+# window manager
+exec dwm
