@@ -103,3 +103,13 @@ map <right> <nop>
 " Use the same symbols as TextMate for tabstops and EOLs
 "set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 "set list
+
+" Markdown configuration
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_folding_style_pythonic = 1
+let g:vim_markdown_override_foldtext = 0
+
+let g:vim_markdown_folding_level = 6
+
+
+
