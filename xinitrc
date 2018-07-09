@@ -11,14 +11,20 @@ xmodmap -e 'clear lock' # Ensures you're not stuck in CAPS on mode
 xmodmap -e 'keycode 0x42=Escape' # Remaps the keyboard so CAPS LOCK = ESC
 
 # set background image
-feh --bg-scale ".suckless/backgrounds/dark0.png"
+#feh --bg-scale ".suckless/backgrounds/dark0.png"
 
-baticon=$(echo -e "\uf0e7")
+# when plugged
 while true;
 do
 	# battery
 	bat=$(acpi | grep "Battery 1" | cut -d" " -f4 | cut -d"," -f1)
 	batstatus=$(acpi | grep "Battery 1" | cut -d" " -f3 | cut -d"," -f1)
+	if [[ "$batstatus" == "Discharging" ]];
+	then
+		baticon=$(echo -e "\uf242")
+	else
+		baticon=$(echo -e "\uf1e6")
+	fi
 	# volume
 	vol=$(amixer get Master | sed -n "5p" | cut -d" " -f6 | cut -d"]" -f1 | cut -d"[" -f2)		
 	volstatus=$(amixer get Master | sed -n "5p" | cut -d" " -f8 | cut -d"]" -f1 | cut -d"[" -f2)		
@@ -45,7 +51,7 @@ do
 		ip=$(echo -e "?")
 	fi
 	# print in status bar
-	xsetroot -name "$volicon $vol $ipicon $ip $baticon $bat $batstatus $(date +"%A %d.%m.%y %H:%M")"
+	xsetroot -name "$volicon $vol $ipicon $ip $baticon $bat $(date +"%A %d.%m.%y %H:%M")"
 	sleep 0.5
 done&
 

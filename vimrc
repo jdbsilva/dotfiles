@@ -56,7 +56,7 @@ set softtabstop=0 noexpandtab
 set showcmd
 
 " highlight current line
-set cursorline          
+set cursorline      
 
 " visual autocomplete for command menu
 set wildmenu            
